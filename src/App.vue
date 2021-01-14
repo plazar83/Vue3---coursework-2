@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     checkLength(){
-      return this.value.length < 3
+      return this.value.length < 4
     }
   },
   components: {AppResumeBlocks, AppComments, AppSelect, AppTextarea, AppButton, AppLoader}

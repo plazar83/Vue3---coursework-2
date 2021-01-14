@@ -13,7 +13,7 @@
           @input="updateValue"
           v-model.value="value"
       />
-      <button :disabled="checkLenght" class="btn primary">Добавить</button>
+      <button :disabled="checkLength" class="btn primary">Добавить</button>
     </form>
     <AppResumeBlocks :blocks="blocks"/>
   </div>
@@ -77,7 +77,7 @@ export default {
     }
   },
   computed: {
-    checkLenght(){
+    checkLength(){
       return this.value.length < 3
     }
   },

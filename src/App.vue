@@ -34,7 +34,6 @@ import AppSelect from './AppSelect'
 import AppButton from './AppButton'
 import AppLoader from './AppLoader'
 export default {
-  // https://vue-coursework2-default-rtdb.firebaseio.com/
   data() {
     return {
       options: {

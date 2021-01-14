@@ -11,7 +11,6 @@
     props: {
       label: String,
       placeholder: String,
-      error: String,
       modelValue: String
     },
     data() {

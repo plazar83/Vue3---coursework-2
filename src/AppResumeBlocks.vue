@@ -14,7 +14,9 @@
   import AppResumeText from './AppResumeText'
 
   export default {
-    props: ['blocks'],
+    props: {
+      blocks: Array
+    },
     methods: {
       componentName(blockType) {
         return 'app-resume-' + blockType

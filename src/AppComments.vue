@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    props: ['comments', 'loading'],
+    props: ['comments'],
     data() {
       return {
         title: 'Комментарии'

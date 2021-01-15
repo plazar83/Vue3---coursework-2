@@ -1,20 +1,6 @@
 <template>
   <div class="container column">
-    <form class="card card-w30" @submit.prevent="addBlock">
-      <AppSelect
-            label="Тип блока"
-            :options="options"
-            @selected="setSelected"
-            v-model.value="type"
-      />
-      <AppTextarea
-          label="Значение"
-          placeholder="Введите значение"
-          @input="updateValue"
-          v-model.value="value"
-      />
-      <button :disabled="checkLength" class="btn primary">Добавить</button>
-    </form>
+    <AppResumeForm @formSubmit="addBlock" />
     <AppResumeBlocks :blocks="blocks"/>
   </div>
   <div class="container">
@@ -27,33 +13,22 @@
 </template>
 
 <script>
+import AppResumeForm from './AppResumeForm'
 import AppResumeBlocks from './AppResumeBlocks'
 import AppComments from './AppComments'
-import AppTextarea from './AppTextarea'
-import AppSelect from './AppSelect'
 import AppButton from './AppButton'
 import AppLoader from './AppLoader'
 export default {
   data() {
     return {
-      options: {
-        title: 'Заголовок',
-        subtitle: 'Подзаголовок',
-        avatar: 'Аватар',
-        text: 'Текст'
-      },
-      type: 'title',
-      value: '',
       blocks: [],
       comments: null,
       loading: false
     }
   },
   methods: {
-    addBlock() {
-      this.blocks.push({type: this.type, value: this.value})
-      this.type = 'title'
-      this.value = ''
+    addBlock(e) {
+      this.blocks.push({type: e.type, value: e.value})
     },
     async loadComments() {
       this.loading = true
@@ -67,20 +42,9 @@ export default {
         console.log(e)
       }
       this.loading = false
-    },
-    setSelected(value) {
-      this.type = value
-    },
-    updateValue(value) {
-      this.value = value
     }
   },
-  computed: {
-    checkLength(){
-      return this.value.length < 4
-    }
-  },
-  components: {AppResumeBlocks, AppComments, AppSelect, AppTextarea, AppButton, AppLoader}
+  components: {AppResumeForm, AppResumeBlocks, AppComments, AppButton, AppLoader}
 }
 </script>
 

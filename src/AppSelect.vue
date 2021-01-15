@@ -1,7 +1,7 @@
 <template>
     <div class="form-control">
-        <label :for="id">{{label}}</label>
-        <select id="type" @change="changeSelect" :value="modelValue">
+        <label :for="ID">{{label}}</label>
+        <select :id="ID" @change="changeSelect" :value="modelValue">
             <option v-for="(option, index) in options" :key="index" :value="index">{{option}}</option>
         </select>
     </div>
@@ -15,15 +15,15 @@
       options: Object,
       modelValue: String,
     },
-    data() {
-      return {
-        id: Math.random(),
-      };
-    },
     methods: {
       changeSelect(event) {
         this.$emit('selected', event.target.value);
       }
     },
+    computed: {
+      ID() {
+        return '_' + Math.random().toString(36).substr(2, 9)
+      }
+    }
   };
 </script>
